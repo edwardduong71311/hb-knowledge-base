@@ -7,9 +7,9 @@ app = FastAPI()
 
 
 class Disease(BaseModel):
-    embeddings: list[float]
+    embeddings: list[list[float]]
 
 
-@app.post("/disease")
+@app.post("/diseases")
 def read_item(disease: Disease):
     return {**query_collection(disease.embeddings)}
