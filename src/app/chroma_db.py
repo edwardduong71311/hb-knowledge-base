@@ -20,10 +20,10 @@ def add_collection(ids, metadatas, embeddings):
     collection.add(embeddings=embeddings, metadatas=metadatas, ids=ids)
 
 
-def query_collection(query, threshold: float = 0.7):
+def query_collection(embeddings, threshold: float = 0.7):
     collection = get_create_collection()
     res = collection.query(
-        query_embeddings=[query], n_results=10, include=["metadatas", "distances"]
+        query_embeddings=embeddings, n_results=10, include=["metadatas", "distances"]
     )
 
     data = []
